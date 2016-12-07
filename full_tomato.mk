@@ -12,6 +12,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_tomato.mk
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit from tomato device
+$(call inherit-product, device/yu/tomato/device.mk)
+
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := tomato
+PRODUCT_NAME := aosp_tomato
+PRODUCT_BRAND := YU
+PRODUCT_MODEL := AO5510
+PRODUCT_MANUFACTURER := YU
